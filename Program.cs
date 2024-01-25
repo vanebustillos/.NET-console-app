@@ -32,17 +32,21 @@ namespace ConsoleApp
 
             if (inputChoice == "y")
             {
-                // Prompt for the number of days that the user wants to add
-                Console.Write("Please, enter the number of days to add: ");
-                if (int.TryParse(Console.ReadLine(), out int daysToAdd))
+                while (true)
                 {
-                    // Add the specified number of days to the parsed date
-                    DateTime newDate = parsedDate.AddDays(daysToAdd);
-                    Console.WriteLine("The new date is: {0:MM/dd/yyyy}", newDate);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid number of days.");
+                    // Prompt for the number of days that the user wants to add
+                    Console.Write("Please, enter the number of days to add: ");
+                    if (uint.TryParse(Console.ReadLine(), out uint daysToAdd))
+                    {
+                        // Add the specified number of days to the parsed date
+                        DateTime newDate = parsedDate.AddDays(daysToAdd);
+                        Console.WriteLine("The new date is: {0:MM/dd/yyyy}", newDate);
+                        break; // Exit the loop if the number of days is valid
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid number of days. Please enter a valid number");
+                    }
                 }
             }
             else
